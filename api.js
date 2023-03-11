@@ -7,7 +7,6 @@ const fetchApi = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
     data.results.forEach((d) => console.log(d.id, d.name, d.gender));
-    //console.log(data.results);
   } catch (error) {
     console.log(error);
   }
