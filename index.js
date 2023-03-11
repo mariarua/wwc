@@ -19,7 +19,7 @@ const writeFile = async () => {
   try {
     const filePath = path.resolve(`${__dirname}/archivo.txt`);
     const message = "Estoy agregando mensajes a mi archivo";
-    const data = await fs.promises.writeFile(filePath, message, (err) => {
+    await fs.promises.writeFile(filePath, message, (err) => {
       if (err) {
         console.log(err);
       }
@@ -33,7 +33,7 @@ const appendFile = async () => {
   try {
     const filePath = path.resolve(`${__dirname}/archivo.txt`);
     const message = "ahora aqui append a mi archivo";
-    const data = await fs.promises.appendFile(filePath, message, (err) => {
+    await fs.promises.appendFile(filePath, message, (err) => {
       if (err) {
         console.log(err);
       }
@@ -56,3 +56,7 @@ const writeAppenteReadFile = async () => {
 };
 
 writeAppenteReadFile();
+
+const fetchApi = require("./api.js");
+
+fetchApi("https://rickandmortyapi.com/api/character");
