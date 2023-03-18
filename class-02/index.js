@@ -10,7 +10,14 @@ const writeHTMLResponse = (res, htmlCode) => {
 };
 
 const server = http.createServer((req, res) => {
-  writeHTMLResponse(res, "<p>Esto es HTML</p>");
+  const url = req.url;
+  console.log("URL es", url);
+
+  if (url === "/other") {
+    writeHTMLResponse(res, "<p>Esta es otra ruta <p>");
+  } else {
+    writeHTMLResponse(res, "<p>Esto es HTML</p>");
+  }
 });
 
 server.listen(PORT, HOST, () => {
