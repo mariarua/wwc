@@ -1,0 +1,16 @@
+{
+  "name": "wwc",
+  "version": "1.0.0",
+  "description": "Exercises of the course of Node.js \"From Hero to Superhero\" hosted by Women Who Code",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
