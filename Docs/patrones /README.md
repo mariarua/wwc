@@ -88,3 +88,90 @@ class Authentication {
   }
 }
 ```
+
+## Adapter, Decorator
+
+Adapta las propiedades del objeto al requerimiento
+
+```typescript
+@Route("/")
+class AppController {
+  healthCheck(_, res) {
+    res.send("Healthy");
+  }
+}
+```
+
+```javascript
+class User {
+  constructor(username, password) {
+    this.username = username;
+    this._password = encrypt(password);
+  }
+
+  setPassword(newPass) {
+    this._password = encrypt(password);
+  }
+
+  getPassword() {
+    return "****";
+  }
+}
+
+const user = new User("mariarua", "123456");
+```
+
+## Chain of Responsibility
+
+```javascript
+// Define una función que verifica si una petición es de un tipo específico
+function isOfType(req, type) {
+  return req.method === type;
+}
+
+// Define un middleware que maneja peticiones GET
+function handleGet(req, res, next) {
+  if (isOfType(req, "GET")) {
+    console.log("Manejando una petición GET");
+    res.send("Petición GET manejada");
+  } else {
+    next();
+  }
+}
+
+// Define un middleware que maneja peticiones POST
+function handlePost(req, res, next) {
+  if (isOfType(req, "POST")) {
+    console.log("Manejando una petición POST");
+    res.send("Petición POST manejada");
+  } else {
+    next();
+  }
+}
+
+// Define un middleware que maneja peticiones PUT
+function handlePut(req, res, next) {
+  if (isOfType(req, "PUT")) {
+    console.log("Manejando una petición PUT");
+    res.send("Petición PUT manejada");
+  } else {
+    next();
+  }
+}
+
+// Define un middleware que maneja peticiones DELETE
+function handleDelete(req, res, next) {
+  if (isOfType(req, "DELETE")) {
+    console.log("Manejando una petición DELETE");
+    res.send("Petición DELETE manejada");
+  } else {
+    next();
+  }
+}
+
+// Define una cadena de middlewares para manejar diferentes tipos de peticiones
+const requestHandlerChain = [handleGet, handlePost, handlePut, handleDelete];
+
+// Registra los middlewares en una ruta específica
+app.use("/api", requestHandlerChain);
+```
